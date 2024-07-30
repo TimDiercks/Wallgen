@@ -3,7 +3,7 @@ name: Lint all changed files
 on: workflow_call
 
 jobs:
-    test:
+    lint:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
