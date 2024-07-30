@@ -1,0 +1,25 @@
+name: Lint all changed files
+
+on: workflow_call
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  # Needed because eslint will need to perform a diff to develop
+                  fetch-depth: 2
+
+            - name: Use Node.js LTS
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: 'npm'
+
+            - name: Install modules
+              run: npm install --frozen-lockfile
+
+            - name: Lint changed files
+              if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop'
+              run: npx eslint $(git diff --name-only --diff-filter=d HEAD^1 -- "*.ts" "*.tsx" "*.js" "*.jsx" "*.svelte" | xargs)
