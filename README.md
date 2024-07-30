@@ -17,7 +17,7 @@ Wallgen is a simple wallpaper generator running in the web browser. It uses the 
 ### Local Development
 
 ```bash
-git clone
+git clone git@github.com:TimDiercks/Wallgen.git
 cd wallgen
 npm install
 npm run dev
@@ -26,8 +26,8 @@ npm run dev
 ### Build
 
 ```bash
-git clone https://github.com/drawdb-io/drawdb
-cd drawdb
+git clone git@github.com:TimDiercks/Wallgen.git
+cd wallgen
 npm install
 npm run build
 ```
