@@ -1,8 +1,8 @@
-import js from '@eslint/js';
-import ts from 'typescript-eslint';
-import svelte, { rules } from 'eslint-plugin-svelte';
-import prettier from 'eslint-config-prettier';
-import globals from 'globals';
+import js from '@eslint/js'
+import ts from 'typescript-eslint'
+import svelte, { rules } from 'eslint-plugin-svelte'
+import prettier from 'eslint-config-prettier'
+import globals from 'globals'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -15,32 +15,33 @@ export default [
 		languageOptions: {
 			globals: {
 				...globals.browser,
-				...globals.node
-			}
-		}
+				...globals.node,
+			},
+		},
 	},
 	{
 		files: ['**/*.svelte', '**/*.ts'],
 		languageOptions: {
 			parserOptions: {
-				parser: ts.parser
-			}
-		}
+				parser: ts.parser,
+			},
+		},
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
+		ignores: ['build/', '.svelte-kit/', 'dist/'],
 	},
 	{
 		rules: {
-			"eqeqeq": "error",
-			"no-magic-numbers": [
-            "error",
-            {
-                "ignore": [-1, 0, 1, 2, 10, 100, 1000],
-                "ignoreDefaultValues": true,
-                "ignoreClassFieldInitialValues": true
-            }
-        ],
-		}
-	}
-];
+			eqeqeq: 'error',
+			'no-magic-numbers': [
+				'error',
+				{
+					ignore: [-1, 0, 1, 2, 10, 100, 1000],
+					ignoreDefaultValues: true,
+					ignoreClassFieldInitialValues: true,
+				},
+			],
+			'prefer-const': 'error',
+		},
+	},
+]
