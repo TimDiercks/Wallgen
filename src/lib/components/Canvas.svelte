@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	export let width = 1920
-	export let height = 1080
+	import { fillCanvas, type CanvasConfiguration } from '$lib/canvas/canvas'
+	export let configuration: CanvasConfiguration
 
 	let canvas: HTMLCanvasElement
 
@@ -9,22 +9,24 @@
 		if (canvas) {
 			const canvasContext = canvas.getContext('2d')
 			if (canvasContext) {
-				canvasContext.font = '120px Source Code Pro'
-				canvasContext.fillStyle = 'white'
-				canvasContext.textAlign = 'center'
-				canvasContext.fillText('Working Canvas!', width / 2, height / 2)
+				fillCanvas(canvasContext, configuration)
 			}
 		}
 	})
 </script>
 
-<canvas bind:this={canvas} {width} {height} />
+<canvas
+	bind:this={canvas}
+	width={configuration.dimensions.width}
+	height={configuration.dimensions.height}
+/>
 
 <style>
 	canvas {
 		margin-top: 2rem;
 		border-radius: 1rem;
 		box-shadow: white 0px 0px 10px;
-		width: 80%;
+		width: 100%;
+		height: 100%;
 	}
 </style>
