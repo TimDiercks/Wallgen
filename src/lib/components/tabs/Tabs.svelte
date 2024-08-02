@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { CanvasConfiguration } from '$lib/canvas/canvas'
+	import { primary, font } from '$lib/colors'
 	import type { TabItem } from './Tabs'
 
 	export let items: TabItem[] = []
@@ -13,7 +14,9 @@
 <ul>
 	{#each items as item}
 		<li class={activeTabValue === item.value ? 'active' : ''}>
-			<button on:click={handleClick(item.value)}>{item.label}</button>
+			<button style="--color: {font};--primary:{primary}" on:click={handleClick(item.value)}
+				>{item.label}</button
+			>
 		</li>
 	{/each}
 </ul>
@@ -27,40 +30,34 @@
 
 <style>
 	.box {
-		margin-bottom: 10px;
-		padding: 40px;
-		border: 1px solid #dee2e6;
-		border-radius: 0 0 0.5rem 0.5rem;
-		border-top: 0;
+		border-radius: 10px;
+		padding: 0.5rem 1rem;
+		background-color: #585858;
+		box-shadow: white 0 0 10px;
 	}
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		padding-left: 0;
+		padding-left: 10px;
 		margin-bottom: 0;
 		list-style: none;
-		border-bottom: 1px solid #dee2e6;
 	}
 	li {
 		margin-bottom: -1px;
 	}
 
 	button {
-		border: 1px solid transparent;
-		border-top-left-radius: 0.25rem;
-		border-top-right-radius: 0.25rem;
+		background-color: #585858;
+		border: 2px solid transparent;
+		border-radius: 0.25rem 0.25rem 0.1rem 0.1rem;
 		display: block;
 		padding: 0.5rem 1rem;
 		cursor: pointer;
 	}
 
-	button:hover {
-		border-color: #e9ecef #e9ecef #dee2e6;
-	}
-
 	li.active > button {
-		color: #495057;
-		background-color: #fff;
-		border-color: #dee2e6 #dee2e6 #fff;
+		color: var(--primary);
+		border: 2px solid;
+		border-color: var(--primary) var(--primary) #585858 var(--primary);
 	}
 </style>

@@ -29,7 +29,7 @@
 	}
 
 	:global(body) {
-		background-color: #5f5f5f;
+		background-color: #0a1b3c;
 	}
 
 	:global(.content) {
