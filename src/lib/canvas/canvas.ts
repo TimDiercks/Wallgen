@@ -20,5 +20,6 @@ export const fillCanvas = (
 	canvasContext: CanvasRenderingContext2D,
 	configuration: CanvasConfiguration,
 ) => {
+	canvasContext.reset()
 	fillBackground(canvasContext, configuration)
 }

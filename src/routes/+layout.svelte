@@ -23,16 +23,21 @@
 	:global(*) {
 		padding: 0;
 		margin: 0;
-		color: #d9d9d9;
+		color: #e4e4e4;
 		font-family: 'Source Code Pro';
+		font-weight: 600;
 	}
 
 	:global(body) {
-		background-color: #0a1a3b;
+		background-color: #5f5f5f;
 	}
 
 	:global(.content) {
 		padding: 0 2rem;
+	}
+
+	:global(h3) {
+		margin-bottom: 1rem;
 	}
 
 	@media only screen and (max-width: 768px) {

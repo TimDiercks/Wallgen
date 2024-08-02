@@ -3,9 +3,10 @@
 
 	export let options: InputFieldOptions
 	export let value: number | string
+	export let style: string = ''
 </script>
 
-<div class="input-container">
+<div {style} class="input-container">
 	{#if options.label}
 		<span>{options.label}</span>
 	{/if}
@@ -20,15 +21,19 @@
 </div>
 
 <style>
-	input {
-		max-width: 100px;
-	}
-
 	input.text-based {
 		border: none;
 		padding: 0.5rem 1rem;
 		border-radius: 10px;
 		font-size: 14px;
+		background-color: #1d1d1d;
+	}
+
+	input.color-based {
+		padding: 2px 5px;
+		height: 34px;
+		border: none;
+		border-radius: 10px;
 		background-color: #1d1d1d;
 	}
 

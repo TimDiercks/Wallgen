@@ -1,15 +1,17 @@
 import { type CanvasConfiguration } from './canvas'
 import { generateGradient, type GradientConfiguration } from './gradient'
 
-export type Background =
-	| {
-			type: BackgroundTypes.solid
-			color: string
-	  }
-	| {
-			type: BackgroundTypes.gradient
-			gradient: GradientConfiguration
-	  }
+export type Background = SolidBackground | GradientBackground
+
+export type SolidBackground = {
+	type: BackgroundTypes.solid
+	color: string
+}
+
+export type GradientBackground = {
+	type: BackgroundTypes.gradient
+	gradient: GradientConfiguration
+}
 
 export enum BackgroundTypes {
 	solid,

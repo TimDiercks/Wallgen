@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { fillCanvas, type CanvasConfiguration } from '$lib/canvas/canvas'
-	import Button from './Button.svelte'
+	import Button from './inputs/Button.svelte'
 	export let configuration: CanvasConfiguration
 
 	let canvas: HTMLCanvasElement
 
 	onMount(() => {
+		updateCanvas(canvas, configuration)
+	})
+
+	const updateCanvas = (canvas: HTMLCanvasElement, configuration: CanvasConfiguration) => {
 		if (canvas) {
 			const canvasContext = canvas.getContext('2d')
 			if (canvasContext) {
@@ -17,7 +21,9 @@
 				canvas.parentElement.style.aspectRatio = `${configuration.dimensions.width / configuration.dimensions.height}`
 			}
 		}
-	})
+	}
+
+	$: updateCanvas(canvas, configuration)
 
 	const downloadImage = () => {
 		if (canvas) {
@@ -39,11 +45,13 @@
 />
 
 <div class="buttonContainer">
+	<Button text={'Refresh'} onClick={() => updateCanvas(canvas, configuration)} />
 	<Button text={'Save'} onClick={downloadImage} />
 </div>
 
 <style>
 	canvas {
+		background-color: black;
 		border-radius: 1rem;
 		box-shadow: white 0px 0px 10px;
 		max-width: 100%;
@@ -51,6 +59,8 @@
 	}
 
 	.buttonContainer {
+		display: flex;
+		gap: 0.5rem;
 		position: absolute;
 		bottom: 1rem;
 		right: 1rem;
