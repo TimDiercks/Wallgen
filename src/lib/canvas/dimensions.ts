@@ -18,6 +18,16 @@ export const preConfiguredDimensions: Dimensions[] = [
 		height: 2160, // 4K UHD
 	},
 
+	// Standard 21:9 resolutions (UltraWide, Horizontal)
+	{
+		width: 2560,
+		height: 1080,
+	},
+	{
+		width: 3440,
+		height: 1440,
+	},
+
 	// Standard 16:9 resolutions (Vertical)
 	{
 		width: 1080,
@@ -32,16 +42,6 @@ export const preConfiguredDimensions: Dimensions[] = [
 		height: 3840, // 4K UHD
 	},
 
-	// Standard 21:9 resolutions (UltraWide, Horizontal)
-	{
-		width: 2560,
-		height: 1080,
-	},
-	{
-		width: 3440,
-		height: 1440,
-	},
-
 	// Standard 21:9 resolutions (UltraWide, Vertical)
 	{
 		width: 1080,
@@ -53,4 +53,18 @@ export const preConfiguredDimensions: Dimensions[] = [
 	},
 ]
 
-export const defaultDimensions = preConfiguredDimensions[0]
+export const getPresetFromId = (id: number) => {
+	return { ...preConfiguredDimensions[id] }
+}
+
+export const getIdFromPresetSize = (width: number, height: number) => {
+	for (let index = 0; index < preConfiguredDimensions.length; index++) {
+		const dimension = preConfiguredDimensions[index]
+		if (width === dimension.width && height === dimension.height) {
+			return index
+		}
+	}
+	return undefined
+}
+
+export const defaultDimensions = getPresetFromId(0)
