@@ -12,7 +12,7 @@
 	{/if}
 
 	{#if options.type === InputFieldType.number}
-		<input class="text-based" type="number" bind:value />
+		<input class="text-based" type="number" bind:value min={options.min} max={options.max} />
 	{:else if options.type === InputFieldType.string}
 		<input class="text-based" type="text" bind:value />
 	{:else if options.type === InputFieldType.color}
