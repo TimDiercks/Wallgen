@@ -30,6 +30,17 @@
 		getIdFromPresetSize(canvasOptions.dimensions.width, canvasOptions.dimensions.height) ?? -1
 
 	$: updatePreset(selectedPreset)
+
+	const backgroundTypes: Selection[] = [
+		{
+			name: 'Solid',
+			value: 0,
+		},
+		{
+			name: 'Gradient',
+			value: 1,
+		},
+	]
 </script>
 
 <h3>Wallpaper size</h3>
@@ -64,6 +75,14 @@
 		}}
 	/>
 </div>
+<SelectField
+	style="width: 200px"
+	bind:value={canvasOptions.background.type}
+	options={{
+		label: 'Background Type',
+		selections: backgroundTypes,
+	}}
+/>
 
 <style>
 	.wrapper {

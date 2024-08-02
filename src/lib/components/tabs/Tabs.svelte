@@ -31,7 +31,7 @@
 <style>
 	.box {
 		border-radius: 10px;
-		padding: 0.5rem 1rem;
+		padding: 1rem 1rem 2rem 1rem;
 		background-color: #585858;
 		box-shadow: white 0 0 10px;
 	}
