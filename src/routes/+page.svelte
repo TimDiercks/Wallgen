@@ -13,9 +13,15 @@
 
 <style>
 	.canvasContainer {
+		display: flex;
 		position: absolute;
-		width: 50%;
+		max-width: 20%;
+		max-height: 80%;
 		right: 1rem;
 		bottom: 1rem;
+		transition: max-width 500ms ease-in-out;
+	}
+	.canvasContainer:hover {
+		max-width: 90%;
 	}
 </style>
