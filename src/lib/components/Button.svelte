@@ -22,5 +22,6 @@
 
 	button:hover {
 		box-shadow: var(--secondary) 0px 0px 5px;
+		cursor: pointer;
 	}
 </style>
