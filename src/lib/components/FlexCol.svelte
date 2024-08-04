@@ -1,5 +1,5 @@
 <script lang="ts">
-	export const style = ''
+	export let style: string = ''
 </script>
 
 <div {style}>

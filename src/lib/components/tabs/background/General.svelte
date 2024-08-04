@@ -9,6 +9,7 @@
 		preConfiguredDimensions,
 	} from '$lib/canvas/dimensions'
 	import type { Selection } from '$lib/components/inputs/SelectField'
+	import FlexCol from '$lib/components/FlexCol.svelte'
 
 	export let canvasOptions: CanvasConfiguration
 
@@ -43,46 +44,48 @@
 	]
 </script>
 
-<h3>Wallpaper size</h3>
+<FlexCol>
+	<h3>Wallpaper size</h3>
 
-<div class="wrapper">
+	<div class="wrapper">
+		<SelectField
+			style="width: 200px"
+			bind:value={selectedPreset}
+			options={{
+				label: 'Presets',
+				selections: sizePresets,
+			}}
+		/>
+
+		<InputField
+			bind:value={canvasOptions.dimensions.width}
+			options={{
+				type: InputFieldType.number,
+				min: 100,
+				max: 10_000,
+				label: 'Width',
+			}}
+		/>
+
+		<InputField
+			bind:value={canvasOptions.dimensions.height}
+			options={{
+				type: InputFieldType.number,
+				min: 100,
+				max: 10_000,
+				label: 'Height',
+			}}
+		/>
+	</div>
 	<SelectField
 		style="width: 200px"
-		bind:value={selectedPreset}
+		bind:value={canvasOptions.background.type}
 		options={{
-			label: 'Presets',
-			selections: sizePresets,
+			label: 'Background Type',
+			selections: backgroundTypes,
 		}}
 	/>
-
-	<InputField
-		bind:value={canvasOptions.dimensions.width}
-		options={{
-			type: InputFieldType.number,
-			min: 100,
-			max: 10_000,
-			label: 'Width',
-		}}
-	/>
-
-	<InputField
-		bind:value={canvasOptions.dimensions.height}
-		options={{
-			type: InputFieldType.number,
-			min: 100,
-			max: 10_000,
-			label: 'Height',
-		}}
-	/>
-</div>
-<SelectField
-	style="width: 200px"
-	bind:value={canvasOptions.background.type}
-	options={{
-		label: 'Background Type',
-		selections: backgroundTypes,
-	}}
-/>
+</FlexCol>
 
 <style>
 	.wrapper {

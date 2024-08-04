@@ -36,10 +36,6 @@
 		padding: 0 2rem;
 	}
 
-	:global(h3) {
-		margin-bottom: 1rem;
-	}
-
 	@media only screen and (max-width: 768px) {
 		:global(.content) {
 			padding: 0 1rem;

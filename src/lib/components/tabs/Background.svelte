@@ -11,7 +11,7 @@
 	export let canvasOptions: CanvasConfiguration
 </script>
 
-<FlexCol>
+<FlexCol style="gap: 2rem">
 	<General bind:canvasOptions />
 
 	{#if canvasOptions.background.type === BackgroundTypes.solid}
