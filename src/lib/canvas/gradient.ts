@@ -32,7 +32,7 @@ export const generateGradient = (
 			configuration.end.y,
 		)
 		configuration.colors.forEach((color, i) => {
-			gradient.addColorStop(i, color)
+			gradient.addColorStop(i * (1 / (configuration.colors.length - 1)), color)
 		})
 		return gradient
 	}
@@ -47,7 +47,7 @@ export const generateGradient = (
 			configuration.outerRadius,
 		)
 		configuration.colors.forEach((color, i) => {
-			gradient.addColorStop(i, color)
+			gradient.addColorStop(i * (1 / (configuration.colors.length - 1)), color)
 		})
 		return gradient
 	}
