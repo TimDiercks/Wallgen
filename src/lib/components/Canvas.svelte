@@ -21,6 +21,15 @@
 				canvas.parentElement.style.aspectRatio = `${configuration.dimensions.width / configuration.dimensions.height}`
 			}
 		}
+
+		// if (browser) {
+		// 	const configString = configToString(configuration)
+		// 	window.history.replaceState(
+		// 		{},
+		// 		'null',
+		// 		window.location.href.split('?')[0] + `?config=${configString}`,
+		// 	)
+		// }
 	}
 
 	$: updateCanvas(canvas, configuration)

@@ -5,6 +5,8 @@
 	import type { TabItem } from '$lib/components/tabs/Tabs'
 	import Background from '$lib/components/tabs/Background.svelte'
 
+	// export let data: { config: CanvasConfiguration } // gets data from ./+page.ts
+
 	let canvasOptions = defaultConfiguration()
 
 	const tabs: TabItem[] = [

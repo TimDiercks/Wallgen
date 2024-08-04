@@ -14,7 +14,7 @@
 
 	const updatePreset = (selectedPreset: number) => {
 		const preset = getPresetFromId(selectedPreset)
-		if (!preset) {
+		if (!preset.width) {
 			return
 		}
 		canvasOptions.dimensions.width = preset.width

@@ -5,6 +5,11 @@ import type { Dimensions } from './dimensions'
 const hexRadix = 16
 const paddingDimensions = 4
 
+// eslint-disable-next-line no-magic-numbers
+const widthLocation = [0, 4]
+// eslint-disable-next-line no-magic-numbers
+const heightLocation = [5, 8]
+
 const decimalToHex = (number: number, padding?: number) => {
 	let hex = number.toString(hexRadix)
 	padding = typeof padding === 'undefined' || padding === null ? (padding = 2) : padding
@@ -16,6 +21,14 @@ const decimalToHex = (number: number, padding?: number) => {
 	return hex
 }
 
+const hexStringToDecimal = (string: string) => {
+	return Number.parseInt(string, hexRadix)
+}
+
+const getSubstring = (string: string, substringIdentifier: number[]) => {
+	return string.substring(substringIdentifier[0], substringIdentifier[1])
+}
+
 export const configToString = (config: CanvasConfiguration): string => {
 	let configString = ''
 
@@ -23,24 +36,24 @@ export const configToString = (config: CanvasConfiguration): string => {
 	const hexHeight = decimalToHex(config.dimensions.height, paddingDimensions)
 
 	configString += `${hexWidth}${hexHeight}`
-	console.log(configString)
 	return configString
 }
 
 export const stringToConfig = (configString: string): CanvasConfiguration => {
-	console.log(configString)
 	const dimensions: Dimensions = {
-		width: 0,
-		height: 0,
+		width: hexStringToDecimal(getSubstring(configString, widthLocation)),
+		height: hexStringToDecimal(getSubstring(configString, heightLocation)),
 	}
 
 	const background: Background = {
 		type: BackgroundTypes.solid,
-		color: '#fff',
+		color: '#1f1f1f',
 	}
 
-	return {
+	const config: CanvasConfiguration = {
 		dimensions: dimensions,
 		background: background,
 	}
+
+	return config
 }
