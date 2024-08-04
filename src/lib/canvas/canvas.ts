@@ -1,4 +1,4 @@
-import { type Background, BackgroundTypes, fillBackground } from './background'
+import { type Background, defaultBackground, fillBackground } from './background'
 import { defaultDimensions, type Dimensions } from './dimensions'
 
 export type CanvasConfiguration = {
@@ -9,10 +9,7 @@ export type CanvasConfiguration = {
 export const defaultConfiguration = (): CanvasConfiguration => {
 	return {
 		dimensions: defaultDimensions,
-		background: {
-			type: BackgroundTypes.solid,
-			color: '#1f1f1f',
-		},
+		background: defaultBackground,
 	}
 }
 

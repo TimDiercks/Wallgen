@@ -1,4 +1,5 @@
 import { type Position } from '$lib/position'
+import { defaultDimensions } from './dimensions'
 
 export type GradientConfiguration =
 	| {
@@ -52,4 +53,28 @@ export const generateGradient = (
 		return gradient
 	}
 	return context.createLinearGradient(0, 0, 0, 0)
+}
+
+export const defaultLinearGradient: GradientConfiguration = {
+	type: GradientType.linear,
+	colors: ['#1f1f1f', '#080808'],
+	start: {
+		x: 0,
+		y: 0,
+	},
+	end: {
+		x: defaultDimensions.width,
+		y: 0,
+	},
+}
+
+export const defaultRadialGradient: GradientConfiguration = {
+	type: GradientType.radial,
+	colors: ['#1f1f1f', '#080808'],
+	center: {
+		x: defaultDimensions.width / 2,
+		y: defaultDimensions.height / 2,
+	},
+	innerRadius: 0,
+	outerRadius: defaultDimensions.width / 2,
 }

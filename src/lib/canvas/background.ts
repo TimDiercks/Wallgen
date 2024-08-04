@@ -1,5 +1,5 @@
 import { type CanvasConfiguration } from './canvas'
-import { generateGradient, type GradientConfiguration } from './gradient'
+import { defaultLinearGradient, generateGradient, type GradientConfiguration } from './gradient'
 
 export type Background = SolidBackground | GradientBackground
 
@@ -31,4 +31,14 @@ export const fillBackground = (
 	}
 
 	context.fillRect(0, 0, configuration.dimensions.width, configuration.dimensions.height)
+}
+
+export const defaultBackground: Background = {
+	type: BackgroundTypes.solid,
+	color: '#1f1f1f',
+}
+
+export const defaultGradientBackground: Background = {
+	type: BackgroundTypes.gradient,
+	gradient: defaultLinearGradient,
 }
