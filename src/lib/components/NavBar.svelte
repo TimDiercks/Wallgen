@@ -45,7 +45,7 @@
 		.logo-container {
 			flex-direction: column;
 			gap: 5px;
-			width: 50px;
+			width: 35px;
 			font-size: 1em;
 		}
 
