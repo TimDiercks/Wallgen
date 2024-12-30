@@ -6,6 +6,7 @@
 	// import { InputFieldType } from '../inputs/InputField'
 	// import { BackgroundTypes } from '$lib/canvas/background'
 	import General from './background/General.svelte'
+	import GradientColor from './background/GradientColor.svelte'
 	import SolidColor from './background/SolidColor.svelte'
 
 	export let canvasOptions: CanvasConfiguration
@@ -16,5 +17,8 @@
 
 	{#if canvasOptions.background.type === BackgroundTypes.solid}
 		<SolidColor bind:canvasOptions />
+	{/if}
+	{#if canvasOptions.background.type === BackgroundTypes.gradient}
+		<GradientColor bind:canvasOptions />
 	{/if}
 </FlexCol>

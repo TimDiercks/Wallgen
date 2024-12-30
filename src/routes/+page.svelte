@@ -7,7 +7,7 @@
 
 	// export let data: { config: CanvasConfiguration } // gets data from ./+page.ts
 
-	let canvasOptions = defaultConfiguration()
+	let canvasOptions = defaultConfiguration() // Make this some kind of state
 
 	const tabs: TabItem[] = [
 		{

@@ -3,20 +3,20 @@ import { defaultDimensions } from './dimensions'
 
 export type GradientConfiguration =
 	| {
-			type: GradientType.linear
+			type: GradientTypes.linear
 			start: Position
 			end: Position
 			colors: string[]
 	  }
 	| {
-			type: GradientType.radial
+			type: GradientTypes.radial
 			center: Position
 			innerRadius: number
 			outerRadius: number
 			colors: string[]
 	  }
 
-export enum GradientType {
+export enum GradientTypes {
 	linear,
 	radial,
 }
@@ -25,7 +25,7 @@ export const generateGradient = (
 	context: CanvasRenderingContext2D,
 	configuration: GradientConfiguration,
 ) => {
-	if (configuration.type === GradientType.linear) {
+	if (configuration.type === GradientTypes.linear) {
 		const gradient = context.createLinearGradient(
 			configuration.start.x,
 			configuration.start.y,
@@ -38,7 +38,7 @@ export const generateGradient = (
 		return gradient
 	}
 
-	if (configuration.type === GradientType.radial) {
+	if (configuration.type === GradientTypes.radial) {
 		const gradient = context.createRadialGradient(
 			configuration.center.x,
 			configuration.center.y,
@@ -56,7 +56,7 @@ export const generateGradient = (
 }
 
 export const defaultLinearGradient: GradientConfiguration = {
-	type: GradientType.linear,
+	type: GradientTypes.linear,
 	colors: ['#1f1f1f', '#080808'],
 	start: {
 		x: 0,
@@ -69,7 +69,7 @@ export const defaultLinearGradient: GradientConfiguration = {
 }
 
 export const defaultRadialGradient: GradientConfiguration = {
-	type: GradientType.radial,
+	type: GradientTypes.radial,
 	colors: ['#1f1f1f', '#080808'],
 	center: {
 		x: defaultDimensions.width / 2,
