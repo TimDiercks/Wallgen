@@ -1,30 +1,77 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	export let width = 1920
-	export let height = 1080
+	import { fillCanvas, type CanvasConfiguration } from '$lib/canvas/canvas'
+	import Button from './inputs/Button.svelte'
+	export let configuration: CanvasConfiguration
 
 	let canvas: HTMLCanvasElement
 
 	onMount(() => {
+		updateCanvas(canvas, configuration)
+	})
+
+	const updateCanvas = (canvas: HTMLCanvasElement, configuration: CanvasConfiguration) => {
 		if (canvas) {
 			const canvasContext = canvas.getContext('2d')
 			if (canvasContext) {
-				canvasContext.font = '120px Source Code Pro'
-				canvasContext.fillStyle = 'white'
-				canvasContext.textAlign = 'center'
-				canvasContext.fillText('Working Canvas!', width / 2, height / 2)
+				fillCanvas(canvasContext, configuration)
+			}
+
+			if (canvas.parentElement) {
+				canvas.parentElement.style.aspectRatio = `${configuration.dimensions.width / configuration.dimensions.height}`
 			}
 		}
-	})
+
+		// if (browser) {
+		// 	const configString = configToString(configuration)
+		// 	window.history.replaceState(
+		// 		{},
+		// 		'null',
+		// 		window.location.href.split('?')[0] + `?config=${configString}`,
+		// 	)
+		// }
+	}
+
+	$: updateCanvas(canvas, configuration)
+
+	const downloadImage = () => {
+		if (canvas) {
+			const canvasUrl = canvas.toDataURL()
+
+			const downloadButton = document.createElement('a')
+			downloadButton.href = canvasUrl
+			downloadButton.download = 'wallpaper.png'
+			downloadButton.click()
+			downloadButton.remove()
+		}
+	}
 </script>
 
-<canvas bind:this={canvas} {width} {height} />
+<canvas
+	bind:this={canvas}
+	width={configuration.dimensions.width}
+	height={configuration.dimensions.height}
+/>
+
+<div class="buttonContainer">
+	<Button text={'Refresh'} onClick={() => updateCanvas(canvas, configuration)} />
+	<Button text={'Save'} onClick={downloadImage} />
+</div>
 
 <style>
 	canvas {
-		margin-top: 2rem;
+		background-color: black;
 		border-radius: 1rem;
 		box-shadow: white 0px 0px 10px;
-		width: 80%;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.buttonContainer {
+		display: flex;
+		gap: 0.5rem;
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
 	}
 </style>

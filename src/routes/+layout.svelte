@@ -23,12 +23,13 @@
 	:global(*) {
 		padding: 0;
 		margin: 0;
+		color: #e4e4e4;
+		font-family: 'Source Code Pro';
+		font-weight: 600;
 	}
 
 	:global(body) {
-		background-color: #0a1a3b;
-		color: #d9d9d9;
-		font-family: 'Source Code Pro';
+		background-color: #0a1b3c;
 	}
 
 	:global(.content) {
